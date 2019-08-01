@@ -15,10 +15,10 @@ body{
 .card{
     text-align:center;
 }
-
-.yellow_card{
-    background-color: #F4C424;
+.yellow_background{
+    background-color:#F4C424;
 }
+
 .card_header{
     background-color: white;
     height: 1px;
