@@ -1,0 +1,36 @@
+<!--Page to add a new company, username and password-->
+<html>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <title> Update - Lock It! </title>
+        <link rel="icon" type="image/png" href="/static/lock.png"/> 
+    </head>
+    <body>
+        <h1> What Company Do you Want to Update? </h1>
+        <form method="post" action="/updated">
+            <div ="container">
+                <div class="row one"> 
+                    <div class="col s5"></div>
+                    <div class="col s2"><input type="text" name="company" value="" placeholder = "company" /></div>
+                    <div class="col s5"></div>
+                </div>
+                <div class="row two">
+                    <div class="col s5"></div>
+                    <div class="col s2"><input type="text" name="user_company" value="" placeholder = "Email or username" /></div>
+                    <div class="col s5"></div>
+                </div>
+                
+                <div class="row three">
+                    <div class="col s5"></div>
+                    <div class="col s2"><input type="text" name="pass_company" value="" placeholder = "New password" /></div>
+                    <div class="col s5"></div>
+                </div>
+                <div class="col s2"><input type="submit" value="Submit"/></div>
+                
+            </div>
+        </form>
+        
+    </body>
+</html>                    
+

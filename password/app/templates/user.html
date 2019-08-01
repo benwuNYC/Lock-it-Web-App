@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <title> Lock It! </title>
+        <link rel="icon" type="image/png" href="/static/lock.png"/> 
+        <!-- import the webpage's stylesheet -->
+        <link rel="stylesheet" href="/static/style.css" type="text/css">
+        <!-- Compiled and minified CSS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    
+    <body>
+        <div class="row page-header ">
+            <div class="col s1"></div>
+            <div class="col s11">
+                <br>
+                <img class= "logo" src="/static/Lock_Logo.png "> 
+                <font size="5">Lock it!</font> 
+            </div>    
+        </div>
+        
+        <div class="row">
+            <div class=" register_header"> </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="w3-sidebar w3-bar-block" style="width:25%">
+            <h3 class="w3-bar-item">Menu</h3>
+            <a href="/add" class="w3-bar-item w3-button"> Add Passwords </a>
+            <a href="/delete" class="w3-bar-item w3-button"> Delete Passwords </a>
+            <a href="/update" class="w3-bar-item w3-button"> Update Passwords </a>
+        </div>
+        
+        <!-- Page Content -->
+        <div style="margin-left:25%">
+            <div class="w3-container w3-teal">
+                <h1> Welcome, {{username}}!</h1>
+            </div>
+            <img src="img_car.jpg" alt="Car" style="width:100%">
+            <div class="w3-container">
+                <h2>Sidebar Navigation Example</h2>
+                <p></p>
+            </div>
+            <h2>Company - username - password</h1>    
+            {% for event in events %}
+                <li>{{event.company}} - {{ event.user_company }} - {{ event.pass_company }}</li>
+            {% endfor %}
+        </div>
+    </body>
+</html>

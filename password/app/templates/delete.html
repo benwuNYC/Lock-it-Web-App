@@ -1,0 +1,22 @@
+<!--Page to add a new company, username and password-->
+<html>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <title> Delete - Lock It! </title>
+        <link rel="icon" type="image/png" href="/static/lock.png"/> 
+    </head>
+    <body>
+        <h1> What company do you want to delete? </h1>
+        <form method="post" action="/deleted">
+            <div class="row four">
+                <div class="col s5"><input type="text" name="deleted_company"  value="" placeholder = "Company" /></div>
+                 <div class="col s5"><input type="text" name="user_company"  value="" placeholder = "Username of Company" /></div>
+                <div class="col s2"><input type="submit" value="Submit"/></div>
+                <div class="col s5"></div>
+            </div>
+        </form>
+        
+    </body>
+</html>                    
+
