@@ -39,3 +39,36 @@ body{
     text-align:center;
     background-color:#F4C424;
 }
+.password_button{
+    height:30px;
+    width:300px;
+    text-align:center;
+    background-color:#F4C424
+}
+.submit_button2{
+    height:30px;
+    width:300px;
+    text-align:center;
+    background-color:#F4C424
+}
+.delete_button{
+    height:30px;
+    width:300px;
+    text-align:center;
+    background-color:#F4C424
+}
+.password_suggestions{
+    text-align:center;
+}
+.update_button{
+    height:30px;
+    width:320px;
+    text-align:center;
+    background-color:#F4C424
+}
+.logout_link{
+    color:black;
+}
+.back_button{
+    color:black;
+}

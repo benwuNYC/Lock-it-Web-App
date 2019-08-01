@@ -1,35 +1,65 @@
-<!--Page to add a new company, username and password-->
 <html>
     <head>
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <title> Update - Lock It! </title>
-        <link rel="icon" type="image/png" href="/static/lock.png"/> 
+    <link rel="icon" type="image/png" href="/static/Lock_Logo.png"/>
+    <meta charset="UTF-8"/>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        ::placeholder{
+            color:#C6B89E;
+        }
+    </style>
     </head>
     <body>
-        <h1> What Company Do you Want to Update? </h1>
-        <form method="post" action="/updated">
-            <div ="container">
-                <div class="row one"> 
-                    <div class="col s5"></div>
-                    <div class="col s2"><input type="text" name="company" value="" placeholder = "company" /></div>
-                    <div class="col s5"></div>
-                </div>
-                <div class="row two">
-                    <div class="col s5"></div>
-                    <div class="col s2"><input type="text" name="user_company" value="" placeholder = "Email or username" /></div>
-                    <div class="col s5"></div>
-                </div>
-                
-                <div class="row three">
-                    <div class="col s5"></div>
-                    <div class="col s2"><input type="text" name="pass_company" value="" placeholder = "New password" /></div>
-                    <div class="col s5"></div>
-                </div>
-                <div class="col s2"><input type="submit" value="Submit"/></div>
-                
+        <div class="row page-header ">
+            <div class="col s2">
+                <br>
+                <br>
+                <font size="3"><a class="back_button" href="/back"><b> Back </b></a></font>
             </div>
-        </form>
+            <div class="col s9">
+            <br>
+            <img class= "logo" src="/static/Lock_Logo.png "> 
+            <font size="5">Lock it!</font> 
+            </div> 
+            <div class="col s1"> 
+            <br>
+            <br>
+            <font size="3"> <a class ="logout_link" href="/logout"> <b> Logout </b></a> </font>
+            </div>
+        </div>
         
+        <div class="row">
+            <div class="register_header"> </div>
+        </div>
+        
+        <div class="row">
+            <div class="Register"><h3> Update a Password </h3></div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4">
+                <form method="post" action="/updated">
+                    <div ="container">
+                        <div class="row one"> 
+                            <input type="text" name="company" value="" placeholder = "company" />
+                            <input type="text" name="user_company" value="" placeholder = "Email or username" />
+                            <input type="text" name="pass_company" value="" placeholder = "New password" />
+                            <input class="update_button" type="submit" value="Update"/>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
     </body>
-</html>                    
+</html>
+

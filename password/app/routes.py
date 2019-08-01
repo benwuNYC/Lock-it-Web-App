@@ -52,10 +52,10 @@ def login():
 @app.route('/User', methods = ['GET', 'POST'])
 def user():
     passwords = mongo.db.passwords
-    if request.method == 'GET':
-        return redirect('/login')
     user_data = request.form
-    
+    if request.method == 'GET':
+        allPassword = list(mongo.db.allPasswords.find({"username":session['username']}))
+        return render_template("user.html", events = allPassword, username = session['username'])
     password = list(passwords.find({"username":user_data['username'].lower(), "password":user_data['password']}))
     print(password)
     if len(password) == 0:
@@ -82,7 +82,7 @@ def adding():
     mongo.db.allPasswords.insert({'username': session['username'], 'company' : user_data['company'], 'user_company' : user_data['user_company'], 'pass_company' : user_data['pass_company']})
     
     allPassword = list(mongo.db.allPasswords.find({"username":session['username']}))
-    return render_template("user.html", events = allPassword) 
+    return render_template("user.html", events = allPassword, username = session['username']) 
     
     
 @app.route('/logout')
@@ -101,7 +101,7 @@ def deleted():
     print(list(mongo.db.allPasswords.find({'username' : session['username'], 'company' : user_data['deleted_company']})))
     mongo.db.allPasswords.remove({'username' : session['username'], 'company' : user_data['deleted_company'], 'user_company': user_data['user_company']})
     allPassword = list(mongo.db.allPasswords.find({"username":session['username']}))
-    return render_template("user.html", events = allPassword)
+    return render_template("user.html", events = allPassword, username = session['username'])
     
 @app.route('/update')
 def update():
@@ -117,4 +117,18 @@ def updated():
     mongo.db.allPasswords.update({'pass_company': password[0]['pass_company']},  {'$set':{'pass_company': user_data['pass_company']}})
     
     allPassword = (mongo.db.allPasswords.find({"username":session['username']}))
-    return render_template("user.html", events = allPassword)
+    return render_template("user.html", events = allPassword, username = session['username'])
+
+@app.route('/checkpassword')
+def check_pass():
+    user_data = request.form
+    if not model.check_password(user_data['pass_company']):
+        return render_template("add.html", strong_pass = False)
+    return render_template("add.html", strong_pass = True)
+    
+@app.route('/back')
+def back():
+    allPassword = (mongo.db.allPasswords.find({"username":session['username']}))
+    return render_template("user.html", events = allPassword, username = session['username'])
+    
+    
