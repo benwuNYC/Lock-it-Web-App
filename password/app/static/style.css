@@ -16,8 +16,9 @@ body{
     text-align:center;
 }
 
-
-
+.yellow_card{
+    background-color: #F4C424;
+}
 .card_header{
     background-color: white;
     height: 1px;
@@ -29,9 +30,12 @@ body{
 .Register{
     text-align:center;
 }
-
 .submit_button{
     width:300px;
     height:50px;
+    background-color:#F4C424;
+}
+.welcome_box{
+    text-align:center;
     background-color:#F4C424;
 }
