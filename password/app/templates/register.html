@@ -48,5 +48,14 @@
             </div>
         </div>
         {% if username_exists%}<p> <center>This username already exists. Try another username. <center></center></p> {% endif %}
+        {% if not strong_pass %}
+        <p><center>This password is not strong enough. Choose another password. </center></p>
+        {% endif %}
+        <div class="register_info">
+             <li> Password must be 8 characters in length </li> 
+            <li> Password must include a combination of letters and numbers </li>
+            <li> Password must include a combination of lowercase and uppercase</li>
+            <li> Password must include special characters</li>
+        </div>
     </body>
 </html>

@@ -32,7 +32,7 @@ def index():
     
 @app.route('/register', methods = ['GET','POST'])
 def register():
-    return render_template("register.html", username_exists = False)
+    return render_template("register.html", username_exists = False, strong_pass = True)
     
 @app.route('/newUser', methods = ['GET', 'POST'])
 def newUser():
@@ -44,6 +44,8 @@ def newUser():
     
     if len(list(passwords.find({'username':user_data['username'].lower()}))) > 0:
          return render_template('register.html', username_exists = True)
+    if not model.check_password(user_data['password']):
+        return render_template("register.html", strong_pass = False)
     passwords.insert({"username": user_data['username'].lower(), "password":user_data['password']})
     
     session['username'] = user_data['username'].lower()
@@ -60,6 +62,7 @@ def user():
     if request.method == 'GET':
         allPassword = list(mongo.db.allPasswords.find({"username":session['username']}))
         return render_template("user.html", events = allPassword, username = session['username'])
+    
     password = list(passwords.find({"username":user_data['username'].lower(), "password":user_data['password']}))
     print(password)
     if len(password) == 0:
@@ -109,15 +112,18 @@ def deleted():
     
 @app.route('/update')
 def update():
-    return render_template('update.html')
+    return render_template('update.html', company_not_exist = False, strong_pass = True)
 @app.route('/updated',methods=['POST'])
 def updated():
     user_data = request.form
+    
     
     password = list(mongo.db.allPasswords.find({'company':user_data['company'], 'username':session['username'], 'user_company':user_data['user_company']}))
     if len(password) == 0:
         print("yes")
         return render_template('update.html', company_not_exist = True) 
+    if not model.check_password(user_data['pass_company']):
+        return render_template("update.html", strong_pass = False)
     print(password)
     mongo.db.allPasswords.update({'pass_company': password[0]['pass_company']},  {'$set':{'pass_company': user_data['pass_company']}})
     

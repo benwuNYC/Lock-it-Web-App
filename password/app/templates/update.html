@@ -60,12 +60,19 @@
                 </form>
                 </div>
             </div>
-        </div>
-        </div>
         {% if company_not_exist %}
         <p><center>The company entered does not exist. Please try again.</center></p>
         {% endif %}
+        {% if not strong_pass %}
+        <p><center>This password is not strong enough. Choose another password.
+        <li> Password must be 8 characters in length </li> 
+        <li> Password must include a combination of letters and numbers </li>
+        <li> Password must include a combination of lowercase and uppercase</li>
+        <li> Password must include special characters</li></center></p>
+        {% endif %}
         <!--<meta http-equiv="Refresh" content="3; url=/User" />-->
+        </div>
+    </div>
     </body>
 </html>
 
