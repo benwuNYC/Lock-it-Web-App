@@ -1,8 +1,10 @@
 import os 
+import time
 from app import app
 from flask import render_template, request, redirect, session, url_for
 from app.models import model, formopener
 from flask_pymongo import PyMongo
+
 # from flask.ext.session import Session
 # app = Flask(__name__)
 # Check Configuration section for more details
@@ -38,14 +40,14 @@ def newUser():
     if request.method == 'GET':
         return redirect('/')
     user_data = request.form
+    print(passwords.find({'username':user_data['username'].lower()}))
     
-    if (passwords.find_one(user_data['username'].lower())) != None:
-        return render_template('register.html', username_exists = True)
+    if len(list(passwords.find({'username':user_data['username'].lower()}))) > 0:
+         return render_template('register.html', username_exists = True)
     passwords.insert({"username": user_data['username'].lower(), "password":user_data['password']})
     
     session['username'] = user_data['username'].lower()
     return render_template("user.html", username = session['username'])
-    
     
 @app.route('/login')
 def login():
@@ -114,7 +116,8 @@ def updated():
     
     password = list(mongo.db.allPasswords.find({'company':user_data['company'], 'username':session['username'], 'user_company':user_data['user_company']}))
     if len(password) == 0:
-        return "Does not exist"
+        print("yes")
+        return render_template('update.html', company_not_exist = True) 
     print(password)
     mongo.db.allPasswords.update({'pass_company': password[0]['pass_company']},  {'$set':{'pass_company': user_data['pass_company']}})
     

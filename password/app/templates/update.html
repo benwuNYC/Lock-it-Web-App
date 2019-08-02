@@ -25,7 +25,7 @@
             </div>
             <div class="col s9">
             <br>
-            <img class= "logo" src="/static/Lock_Logo.png "> 
+            <a href="/index"><img class= "logo" src="/static/Lock_Logo.png "></a>
             <font size="5">Lock it!</font> 
             </div> 
             <div class="col s1"> 
@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col s4"></div>
                 <div class="col s4">
-                <form method="post" action="/updated">
+                <form method="post" action="/updated" autocomplete="off">
                     <div ="container">
                         <div class="row one"> 
                             <input type="text" name="company" value="" placeholder = "Company" />
@@ -62,6 +62,10 @@
             </div>
         </div>
         </div>
+        {% if company_not_exist %}
+        <p><center>The company entered does not exist. Please try again.</center></p>
+        {% endif %}
+        <!--<meta http-equiv="Refresh" content="3; url=/User" />-->
     </body>
 </html>
 

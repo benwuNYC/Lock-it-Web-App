@@ -25,7 +25,7 @@
             </div>
             <div class="col s9">
             <br>
-            <img class= "logo" src="/static/Lock_Logo.png "> 
+            <a href="/index"><img class= "logo" src="/static/Lock_Logo.png "></a>
             <font size="5">Lock it!</font> 
             </div> 
             <div class="col s1"> 
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col s4"></div>
                     <div class="col s4">
-                        <form method="post" action="/adding">
+                        <form method="post" action="/adding" autocomplete="off">
                             <input type="text" name="company" value="" placeholder="Company">
                             <input type="text" name="user_company" value="" placeholder = "Email address or username"/>
                             <input type="password" name="pass_company"  value="" placeholder = "Password" />
@@ -66,7 +66,7 @@
                         
                         {% elif strong_pass == 1 %}
                         <p>Your password is strong enough. It has been successfully added.</p>
-                        
+                        <meta http-equiv="Refresh" content="3; url=/User" />
                         {% endif %}
                         <li> Password must be 8 characters in length </li> 
                         <li> Password must include a combination of letters and numbers </li>
