@@ -31,40 +31,43 @@ body{
     text-align:center;
 }
 .submit_button{
-    width:300px;
+    width:310px;
     height:50px;
     background-color:#F4C424;
 }
 .welcome_box{
     text-align:center;
-    background-color:#F4C424;
 }
 .password_button{
-    height:30px;
+    height:35px;
     width:300px;
     text-align:center;
     background-color:#F4C424
 }
 .submit_button2{
-    height:30px;
+    height:35px;
     width:300px;
     text-align:center;
-    background-color:#F4C424
+    background-color: white;
 }
 .delete_button{
     height:30px;
-    width:300px;
+    width:340px;
     text-align:center;
-    background-color:#F4C424
+    background-color: white;
 }
 .password_suggestions{
     text-align:center;
 }
+
+.user_header{
+    color: #616161;;
+}
 .update_button{
     height:30px;
-    width:320px;
+    width:340px;
     text-align:center;
-    background-color:#F4C424
+    background-color: white;
 }
 .logout_link{
     color:black;
@@ -72,3 +75,18 @@ body{
 .back_button{
     color:black;
 }
+.menu_bar{
+    background-color:#F4C424
+}
+
+.Background_Color{
+    background-color:#F4C424;
+    height:600;
+}
+
+.register_header2{
+    height:1px;
+    background-color:black;
+    width:50px;
+}
+

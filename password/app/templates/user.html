@@ -4,11 +4,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <title> Lock It! </title>
         <link rel="icon" type="image/png" href="/static/Lock_Logo.png"/>
-        <!-- import the webpage's stylesheet -->
-        <link rel="stylesheet" href="/static/style.css" type="text/css">
         <!-- Compiled and minified CSS -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- import the webpage's stylesheet -->
+        <link rel="stylesheet" href="/static/style.css" type="text/css">
     </head>
     
     <body>
@@ -26,23 +26,27 @@
                 <font size="3"> <a class ="logout_link" href="/logout"> <b> Logout</b></a> </font>
             </div>
         </div>
-        
         <div class="row">
             <div class=" register_header"> </div>
         </div>
         
         <!-- Sidebar -->
-        <div class="w3-sidebar w3-bar-block" style="width:25%">
+        <div class="menu_bar w3-sidebar w3-bar-block" style="width:15%" >
             <h3 class="w3-bar-item">Menu</h3>
-            <a href="/add" class="w3-bar-item w3-button"> Add Passwords </a>
+            <a href="/add" class="w3-bar-item w3-button"> Add Passwords</a>
             <a href="/delete" class="w3-bar-item w3-button"> Delete Passwords </a>
             <a href="/update" class="w3-bar-item w3-button"> Update Passwords </a>
         </div>
         
         <!-- Page Content -->
-        <div style="margin-left:25%">
+        <div style="margin-left:20%">
             <div class="w3-container welcome_box">
                 <h1> Welcome {{username}}!</h1>
+                <div class="user_header">Manage your info, privacy, and security to make the internet work better for you </div>
+                <br>
+                <div class="row">
+                    <div class=" register_header"> </div>
+                </div>
             </div>
              {% for event in events %}
                <ul>

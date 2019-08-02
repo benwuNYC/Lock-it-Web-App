@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         ::placeholder{
-            color:#C6B89E;
+            color: #616161;
         }
     </style>
     </head>
@@ -47,5 +47,8 @@
                 <div class="col s4"></div>
             </div>
         </div>
+        {% if user_not_found %}
+        <p><center>Your username or password is incorrect.</center></p>
+        {% endif %}
     </body>
 </html>

@@ -30,24 +30,26 @@ def index():
     
 @app.route('/register', methods = ['GET','POST'])
 def register():
-    return render_template("register.html")
+    return render_template("register.html", username_exists = False)
     
 @app.route('/newUser', methods = ['GET', 'POST'])
 def newUser():
     passwords = mongo.db.passwords
     if request.method == 'GET':
-        return "A"
-    user_data = request.form 
-    if passwords.find_one(user_data['username'].lower()):
-        return "Sorry, username taken"
-    print(user_data)
+        return redirect('/')
+    user_data = request.form
+    
+    if (passwords.find_one(user_data['username'].lower())) != None:
+        return render_template('register.html', username_exists = True)
     passwords.insert({"username": user_data['username'].lower(), "password":user_data['password']})
-    return redirect('/')
+    
+    session['username'] = user_data['username'].lower()
+    return render_template("user.html", username = session['username'])
     
     
 @app.route('/login')
 def login():
-    return render_template("login.html")
+    return render_template("login.html", user_not_found = False)
     
 @app.route('/User', methods = ['GET', 'POST'])
 def user():
@@ -59,7 +61,7 @@ def user():
     password = list(passwords.find({"username":user_data['username'].lower(), "password":user_data['password']}))
     print(password)
     if len(password) == 0:
-        return("User not found")
+        return render_template("login.html", user_not_found = True)
     
     session['username'] = user_data['username'].lower()
     allPassword = list(mongo.db.allPasswords.find({"username":session['username']}))
@@ -71,18 +73,18 @@ def user():
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
-    return render_template("add.html", strong_pass = True)
+    return render_template("add.html", strong_pass = 2)
     
 @app.route('/adding', methods = ['POST'])
 def adding():
     user_data = request.form
     if not model.check_password(user_data['pass_company']):
-        return render_template("add.html", strong_pass = False)
+        return render_template("add.html", strong_pass = 0)
     
     mongo.db.allPasswords.insert({'username': session['username'], 'company' : user_data['company'], 'user_company' : user_data['user_company'], 'pass_company' : user_data['pass_company']})
     
     allPassword = list(mongo.db.allPasswords.find({"username":session['username']}))
-    return render_template("user.html", events = allPassword, username = session['username']) 
+    return render_template("add.html", strong_pass = 1)
     
     
 @app.route('/logout')

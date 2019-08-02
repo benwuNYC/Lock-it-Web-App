@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         ::placeholder{
-            color:#C6B89E;
+            color: #616161 ;
         }
     </style>
     </head>
@@ -34,45 +34,45 @@
             <font size="3"> <a class ="logout_link" href="/logout"> <b> Logout </b></a> </font>
             </div>
         </div>
-        
+                
+        <div class="Background_Color">
         <div class="row">
             <div class=" register_header"> </div>
         </div>
-        
-        <div class="row">
-            <div class="Register"><h3> Add a Password </h3></div>
-        </div>
-        
-        <div class="container">
+
             <div class="row">
-                <div class="col s4"></div>
-                <div class="col s4">
-                    <form method="post" action="/adding">
-                        <input type="text" name="company" value="" placeholder="Company">
-                        <input type="text" name="user_company" value="" placeholder = "Email address or username"/>
-                        <input type="password" name="pass_company"  value="" placeholder = "Password" />
-                    </form>
-                    <form method="post" action="/checkpassword">
-                        <input class="password_button"type="submit" value="Check Password Strength"/>
-                    </form>
-                    <form method="post" action="/adding">
-                        <input class="submit_button2" type="submit" value="Submit"/>
-                    </form>
-                </div>
-                <div class="col s4"></div>
+                <div class="Register"><h3> Add a Password </h3></div>
             </div>
+            
             <div class="container">
-                <div class="password_suggestions">
-                    {% if not strong_pass %} <p> Please use a stronger password.</p> 
-                    
-                    {% else %}
-                    <p>Your password is strong enough</p>
-                    {% endif %}
-                    <li> Password must be 8 characters in length </li> 
-                    <li> Password must include a combination of letters and numbers </li>
-                    <li> Password must include a combination of lowercase and uppercase</li>
-                    <li> Password must include special characters</li>
-                    
+                <div class="row">
+                    <div class="col s4"></div>
+                    <div class="col s4">
+                        <form method="post" action="/adding">
+                            <input type="text" name="company" value="" placeholder="Company">
+                            <input type="text" name="user_company" value="" placeholder = "Email address or username"/>
+                            <input type="password" name="pass_company"  value="" placeholder = "Password" />
+                            <br>
+                            <br>
+                            <input class="submit_button2" type="submit" value="Check Password and Add Password"/>
+                        </form>
+                        
+                    </div>
+                    <div class="col s4"></div>
+                </div>
+                <div class="container">
+                    <div class="password_suggestions">
+                        {% if strong_pass == 0 %} <p> Please use a stronger password.</p> 
+                        
+                        {% elif strong_pass == 1 %}
+                        <p>Your password is strong enough. It has been successfully added.</p>
+                        
+                        {% endif %}
+                        <li> Password must be 8 characters in length </li> 
+                        <li> Password must include a combination of letters and numbers </li>
+                        <li> Password must include a combination of lowercase and uppercase</li>
+                        <li> Password must include special characters</li>
+                    </div>
                 </div>
             </div>
         </div>
